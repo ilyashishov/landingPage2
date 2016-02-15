@@ -65,10 +65,9 @@ $('.call-open').on('click', function(){
 })
 
 
-
+var flag = true;
 $(document).scroll(function(event) {
-	var flag = true;
-	console.log($(document).scrollTop());
+	console.log($(document).scrollTop())
 	if($(document).scrollTop() > 3701 && flag){
 		$('#number1').animateNumber({ number: 162 });
 		$('#number2').animateNumber({ number: 487 });
@@ -77,3 +76,65 @@ $(document).scroll(function(event) {
 		flag = false;
 	}
 });
+
+var flag2 = true;
+$(document).scroll(function(event) {
+	if($(document).scrollTop() > 1100 && flag2){
+		setTimeout(function(){
+			$('.block3 .bl1').addClass('bounceIn');
+		},300)
+		setTimeout(function(){
+			$('.block3 .bl2').addClass('bounceIn');
+		},100)
+		setTimeout(function(){
+			$('.block3 .bl3').addClass('bounceIn');
+		},200)
+		setTimeout(function(){
+			$('.block3 .bl4').addClass('bounceIn');
+		},50)
+		setTimeout(function(){
+			$('.block3 .bl5').addClass('bounceIn');
+		},150)
+		flag2 = false;
+	}
+}); 
+ $('form').submit(function() {
+ 	var name, phone, url, tema;
+ 	name = $(this).find('input[name=name]').val();
+ 	phone = $(this).find('input[name=phone]').val();
+ 	url = $(this).find('input[name=url]').val();
+ 	tema = $(this).attr('tema');
+ 	$.ajax({
+ 		url: './php/send.php',
+ 		type: 'POST',
+ 		dataType: 'html',
+ 		data: {name: name, phone: phone, url: url, tema: tema},
+ 		success: function(data){
+ 			if(true){
+ 				$('.windows, .thank').show().animate({
+ 					opacity: 1
+ 				},500);
+ 				setTimeout(function(){
+ 					$('.windows, .thank').animate({
+ 						opacity: 0
+ 					},
+ 					500, function() {
+ 						$(this).hide()
+ 					});
+ 				},1500)
+ 			}
+ 		}
+ 	})
+ 	console.log(name, tema)
+ 	return false;
+ });
+
+ $('.request').on('click', function(){
+ 	$('.form-buy-request form').attr('tema', $(this).attr('tema'));
+ 	$('.windows, .form-buy-request').show().animate({
+ 		opacity: 1
+ 	},500);
+ 	return false;
+ })
+
+ Inputmask({"mask": "+7 (999) 999-9999"}).mask($('input[name=phone]'));

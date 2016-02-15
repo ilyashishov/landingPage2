@@ -221,7 +221,20 @@ header{
 .text b{
 	font-weight: bold;
 }
-
+.text ul{
+	margin-left: 40px;
+	list-style: none;
+}
+.text li{
+	position: relative;
+}
+.text ul img{
+	width: 20px;
+	height: auto;
+	position: absolute;
+	top: 6px;
+	left: -30px;
+}
 .block3{
 	background: #E6E6E6;
 }
@@ -257,7 +270,7 @@ header{
 	background-image: url(../img/block3_bl4.png);
 }
 .block3 .bl5{
-	background-image: url(../img/block3_bl1.png);
+	background-image: url(../img/block3_bl5.png);
 }
 .block4{
 	background: url(../img/block4.png);
@@ -547,6 +560,7 @@ footer{
 }
 .f-center img{
 	margin: 5px;
+	margin-top: 15px;
 }
 .f-bottom{
 	width: 100%;
